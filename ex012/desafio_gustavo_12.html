@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preço Mudou</title>
+</head>
+<style>
+    
+    body { font: 12pt Arial; }
+    button { padding: 15px; cursor: pointer;}
+
+</style>
+<body>
+    <h1>Preço Mudou</h1>
+    <button onclick="verificar()">Verificar</button>
+    <p id="res">Clique no botão acima para analisar a mudança de preço.</p>
+</body>
+
+<script>
+
+    function verificar() {
+        let precoAnterior = parseFloat(prompt(`Qual o preço anterior do produto?`))
+        let precoAtual = parseFloat(prompt(`Qual é o preço atual do produto?`))
+
+        if(precoAtual > precoAnterior) {
+            preco = ('O produto está mais caro')
+        }else if(precoAtual < precoAnterior){
+            preco = ('O produto está mais barato')
+        }else if (precoAtual === precoAnterior){
+            preco = ('O produto está com o mesmo valor!')
+        }
+
+        if(precoAtual > precoAnterior) {
+            valor = (`subiu R$ ${precoAtual - precoAnterior}`),
+            variacao = (`para cima`)
+        }else if(precoAtual < precoAnterior) {
+            valor = (`caiu R$ ${precoAnterior - precoAtual}`),
+            variacao = ('para baixo')
+        }else if(precoAtual === precoAnterior){
+            valor = `está o mesmo valor`
+        }
+
+        let porcentagemValor = (((precoAnterior - precoAtual) / precoAnterior) * 100).toFixed(2)
+
+        porcentagemValor = porcentagemValor < 0 ? porcentagemValor * -1 : porcentagemValor;
+
+        let inserirValor = document.getElementById('res')
+        inserirValor.innerHTML = `<h2>Analisando os valores informados:</h2>`
+        inserirValor.innerHTML += `<p>O produto custava R$ ${precoAnterior} e agora custa R$ ${precoAtual}.</p>`
+        inserirValor.innerHTML += `<p>${preco}.</p>`
+        inserirValor.innerHTML += `<p>O preço ${valor} em relação ao preço anterior.</p>`
+        inserirValor.innerHTML += `<p> Uma variação de ${porcentagemValor}% ${variacao}.</p>`
+    }
+
+</script>
+</html>

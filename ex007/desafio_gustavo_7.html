@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor R$ => US$</title>
+</head>
+
+<style>
+
+    body { font: 12pt Arial; }
+
+    button { padding: 15px; cursor: pointer; }
+
+</style>
+
+<body>
+    <h1>Conversor de R$ => US$</h1>
+    <button onclick="converter()">Converter</button>
+    <p id="res">Clique no botão acima para iniciar.</p>
+</body>
+<script>
+
+    var dolar = prompt('Informar valor do dólar').replace(',', '.')
+
+    function converter() {
+        var carteira = prompt('Quanto R$ você tem na carteira?').replace(',', '.')
+        var conversao = parseFloat(carteira / dolar).toFixed(2)
+
+        var inserirNaTela = document.getElementById('res')
+        inserirNaTela.innerHTML = `<h2>Valor do dólar atualmente por R$${dolar}</h2>`
+        inserirNaTela.innerHTML += `<p>Com R$ ${carteira} ao efetuar a conversão você terá U$ ${conversao} dólares para viajar!</p>`
+    }
+</script>
+
+</html>

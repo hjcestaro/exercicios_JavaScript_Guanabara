@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <title>Ano Bissexto</title>
+</head>
+<style>
+    
+    body { font: 12pt Arial; }
+    button { padding: 15px; cursor: pointer;}
+
+    #positivo {
+        color: green;
+        background-color: #7ee961;
+        border-radius: 3px;
+        padding: 3px;
+    }
+
+    #negativo {
+        background-color: #f4583e;
+        border-radius: 3px;
+        padding: 3px;
+    }
+
+</style>
+<body>
+
+    <h1>Ano Bissexto</h1>
+    <button onclick="verificarAno()">Verificar</button>
+    <p id="res">Informe um ano para saber se ele é bissexto</p>
+    
+</body>
+
+<script>
+
+    function verificarAno() {
+        let ano = prompt(`Qual é o ano que você quer verificar?`)
+        let informarAno = document.getElementById('res')
+
+        informarAno.innerHTML = `<h2>Analisando o ano de ${ano}...</h2>`
+        
+            if ( ( ano % 4 == 0 && ano % 100 != 0 ) || (ano % 400 == 0) ) { 
+                informarAno.innerHTML += `<p>O ano de ${ano} <b id="positivo"> É BISSEXTO </b><i class="em em---1" aria-role="presentation" aria-label="THUMBS UP SIGN"></i></p>` 
+            } else {
+                informarAno.innerHTML += `<p>O ano de ${ano.class} <b id="negativo"> NÃO É BISSEXTO </b><i class="em em--1" aria-role="presentation" aria-label="THUMBS DOWN SIGN"></i></p>`
+            }
+        }
+
+</script>
+</html>

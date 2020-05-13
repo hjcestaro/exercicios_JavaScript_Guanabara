@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do Aluno</title>
+</head>
+<style>
+    
+    body { font: 12pt Arial; }
+    button { padding: 15px; cursor: pointer;}
+
+    #reprovado {
+        background-color: #e08688;
+        border-radius: 3px;
+        color: #7a1406;
+        padding: 2px;
+    }
+
+    #recuperacao {
+        color: #f0c68c;
+    }
+
+    #aprovado {
+        background-color: #a6eb9a;
+        border-radius: 3px;
+        color: #377e2e;
+        padding: 2px;
+    }
+
+</style>
+<body>
+    <h1>Situação do Aluno</h1>
+    <button onclick="informarNotas()">Entrar com as notas</button>
+    <p id="res">Clique no botão acima para informar as notas do aluno.</p>
+</body>
+<script>
+
+    function informarNotas() {
+        let nome = prompt(`Qual é o nome do aluno(a)?`)
+        let nota1 = parseFloat(prompt(`Primeira nota de ${nome}:`).replace(',' , '.'))
+        let nota2 = parseFloat(prompt(`Segunda nota de ${nome}:`).replace(',' , '.'))
+        let media = (nota1 + nota2) / 2
+
+        if (media < 3) {
+            situacao = `<b id="reprovado">REPROVADO</b>`
+        }else if (media < 6 ) {
+            situacao = `<b id="recuperacao">RECUPERAÇÃO</b>`
+        }if(media > 6){
+            situacao = `<b id="aprovado">APROVADO</b>`
+        }
+
+        let inserirNotas = document.getElementById('res')
+        inserirNotas.innerHTML = `<h2>Analisando a situação de ${nome}</h2>`
+        inserirNotas.innerHTML += `<p>Com as notas ${nota1} e ${nota2}, a <strong>média é ${media}</strong></p>`
+        inserirNotas.innerHTML += `<p>Com a média de ${media} o aluno está ${situacao}</p>`
+    }
+    
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajustar salário</title>
+</head>
+<style>
+    
+    body { font: 12pt Arial; }
+    button { padding: 15px; cursor: pointer;}
+
+</style>
+<body>
+    <h1>Reajuste Salarial</h1>
+    <button onclick="reajustar()">Reajustar Salário</button>
+    <p id="res">Clique no botão acima para iniciar</p>
+</body>
+<script>
+
+    function reajustar(){
+        let nome = prompt(`Qual o nome do funcionário?`)
+        let salario = parseFloat(prompt(`Qual o salário de ${nome}`)).toFixed(2)
+        let porcentagem = parseFloat(prompt(`O salário de ${nome} vai ser reajustado em qual porcentagem?`))
+    
+        let calcularPorcentagem = parseFloat((porcentagem*salario)/100)
+        let aumentarSalario = parseFloat(salario + calcularPorcentagem).toFixed(2)      
+
+        let inserirPorcentagem = document.getElementById('res')
+        inserirPorcentagem.innerHTML = `<h2>${nome} recebeu um aumento salarial!</h2>`
+        inserirPorcentagem.innerHTML += `<p>O salário atual era R$ ${salario}</p>`
+        inserirPorcentagem.innerHTML += `<p>Com um aumento de ${porcentagem}%, o salário vai aumentar R$ ${calcularPorcentagem} no próximo mês</p>`
+        inserirPorcentagem.innerHTML += `<p>E a partir daí, ${nome} vai passar a ganhar R$ ${aumentarSalario}</p>`
+    }
+
+</script>
+</html>
